@@ -6,9 +6,6 @@ boolToInt : Bool -> Int
 boolToInt True = 1
 boolToInt False = 0
 
-intToBool : Int -> Bool
-intToBool x = x /= 0
-
 nullCheck : {t : FTy} -> interpFTy t -> IO (Maybe (interpFTy t))
 nullCheck {t} value = let it = interpFTy t in
   mkForeign (
