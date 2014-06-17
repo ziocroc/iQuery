@@ -1,5 +1,7 @@
 module Ajax
 
+import IQuery.Utils
+
 %access private
 
 data XMLHttpRequest : Type where
@@ -24,14 +26,10 @@ open : XMLHttpRequest -> Method -> String -> Bool -> IO ()
 open (MkXHR xhr) method url async =
   mkForeign (
     FFun "%0.open(%1,%2,%3)" [FPtr, FString, FString, FInt] FUnit
-  ) xhr (toMethod method) url (toAsync async)
+  ) xhr (toMethod method) url (boolToInt async)
   where toMethod : Method -> String
         toMethod GET = "GET"
         toMethod POST = "POST"
-
-        toAsync : Bool -> Int
-        toAsync True = 1
-        toAsync False = 0
 
 setRequestHeader : XMLHttpRequest -> String -> String -> IO ()
 setRequestHeader (MkXHR xhr) name value =
