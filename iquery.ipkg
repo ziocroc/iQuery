@@ -1,4 +1,5 @@
 package iquery
 
-modules = IQuery, IQuery.Ajax, IQuery.Event, IQuery.Interval, IQuery.Key, IQuery.Timeout, IQuery.Elements
+modules = IQuery, IQuery.Ajax, IQuery.Event, IQuery.Interval, IQuery.Key,
+IQuery.Timeout, IQuery.Elements, IQuery.Utils
 
